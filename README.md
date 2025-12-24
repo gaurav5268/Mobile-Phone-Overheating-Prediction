@@ -1,60 +1,68 @@
-This project is an end-to-end Machine Learning based system that predicts:
+Mobile Phone Overheating Prediction System
+Project Overview
 
-- Actual mobile phone temperature (°C) using regression
-- Overheating risk (Yes/No) using classification
-- Actionable user advice to reduce overheating
+This project is an end-to-end Machine Learning–based system designed to predict mobile phone overheating and provide preventive recommendations. The system performs three main tasks:
 
-The system combines ML models + real-world decision logic and is deployed using a Streamlit web interface.
+Predicts the actual mobile phone temperature (°C) using a regression model
+
+Predicts overheating risk (Yes/No) using a classification model
+
+Provides actionable user advice to reduce overheating
+
+The solution combines machine learning models with real-world decision logic and is deployed using a Streamlit-based web interface.
 
 Problem Statement
 
-Mobile phones often overheat due to:
+Mobile phones often overheat due to multiple factors such as:
 
-High CPU/GPU usage (gaming, video processing)
+High CPU and GPU usage during gaming or video processing
 
-Charging during heavy usage
+Charging the device during heavy usage
 
-High ambient temperature
+High ambient environmental temperature
 
-Poor ventilation (phone case on)
+Poor ventilation, for example when a phone case is used
 
-Overheating affects:
+Overheating negatively impacts:
 
-Performance
+Device performance
 
-Battery health
+Battery health and lifespan
 
 User safety
 
-This project aims to predict overheating early and provide preventive recommendations.
+This project aims to predict overheating at an early stage and suggest preventive actions to avoid potential damage.
 
 Solution Approach
 
-The system uses two ML models:
+The system is built using two machine learning models:
 
-Temperature Prediction (Regression)
+1. Temperature Prediction (Regression)
 
 Model: Random Forest Regressor
 
-Output: Predicted phone temperature in °C
+Output: Predicted mobile phone temperature in degrees Celsius
 
-2️⃣ Overheat Risk Prediction (Classification)
+2. Overheat Risk Prediction (Classification)
 
 Model: Random Forest Classifier
 
 Output: Probability of overheating
 
-3️⃣ Final Decision Logic
+3. Final Decision Logic
 
-If predicted temperature ≥ 50°C 
+An overheating alert is raised if:
+
+The predicted temperature is greater than or equal to 50°C
 OR
-If overheating probability ≥ 0.4
-→ Raise OVERHEATING ALERT
 
+The predicted overheating probability is greater than or equal to 0.4
 
-This logic reduces false negatives and improves safety.
+This combined logic helps reduce false negatives and improves user safety.
 
-🧪 Features Used
+Features Used
+
+The model uses the following input features:
 
 Ambient temperature
 
@@ -72,103 +80,90 @@ Charging status
 
 Phone case status
 
-Background apps count
+Number of background applications
 
-Time since boot
+Time since device boot
 
-App type (idle / social / video / game)
+Application type (idle, social, video, game)
 
-Network type (WiFi / 4G / 5G)
+Network type (WiFi, 4G, 5G)
 
-Engineered features (mean load, interactions, logs)
+Additional engineered features include mean load values, interaction features, and logarithmic transformations.
 
-⚙️ Tech Stack
+Tech Stack
 
 Python
 
 scikit-learn
 
-pandas / numpy
+pandas
+
+numpy
 
 Streamlit
 
 joblib
 
-📂 Project Structure
-overheat/
-│
-├── app.py                     # Streamlit app
-├── temperature_regressor.pkl  # Regression model
-├── overheat_classifier.pkl    # Classification model
-├── model_features.pkl         # Saved feature schema
-├── requirements.txt
-├── README.md
-
-▶️ How to Run the Project
-1️⃣ Create & activate virtual environment
+How to Run the Project
+Step 1: Create and activate a virtual environment
 python -m venv mlenv
 mlenv\Scripts\activate
 
-2️⃣ Install dependencies
+Step 2: Install required dependencies
 pip install -r requirements.txt
 
-3️⃣ Run Streamlit app
+Step 3: Run the Streamlit application
 streamlit run app.py
 
 
-App will open at:
+The application will be accessible at:
 
 http://localhost:8501
 
-📊 Output Example
+Output Description
 
-The app displays:
+The Streamlit application displays:
 
-✅ Predicted Temperature (°C)
+Predicted mobile phone temperature (°C)
 
-📊 Overheat Probability
+Overheating probability
 
-🚨 Final Alert (SAFE / OVERHEATING RISK)
+Final system alert (SAFE or OVERHEATING RISK)
 
-💡 Suggested Action (e.g., unplug charger, close apps)
+Suggested action to reduce overheating
 
-💡 Sample Advice Logic
+Sample Advice Logic
 
-High GPU usage → Close heavy gaming apps
+High GPU usage: Close heavy gaming or graphics-intensive applications
 
-Charging during load → Unplug charger
+Charging during high load: Unplug the charger
 
-Phone case on → Remove case temporarily
+Phone case present: Remove the phone case temporarily
 
-Otherwise → Reduce brightness / rest device
+Otherwise: Reduce screen brightness or allow the device to rest
 
-🏆 Key Highlights
+Key Highlights
 
-✔ Regression + Classification combined
+Combines regression and classification models
 
-✔ Handles class imbalance
+Handles class imbalance effectively
 
-✔ Feature mismatch safely handled
+Safely manages feature mismatch during prediction
 
-✔ Models saved & reused using .pkl
+Models are saved and reused using .pkl files
 
-✔ Real-time interactive interface
+Provides a real-time interactive user interface
 
-✔ Industry-style ML workflow
+Follows an industry-style machine learning workflow
 
-📈 Future Improvements
+Future Improvements
 
-Time-series temperature prediction (LSTM)
+Time-series temperature prediction using LSTM models
 
-Personalized models per device
+Personalized models for different devices
 
-On-device inference (TensorFlow Lite)
+On-device inference using TensorFlow Lite
 
-Cloud deployment (Render / HuggingFace Spaces)
+Cloud deployment on platforms such as Render or Hugging Face Spaces
 
-Real sensor data integration
-
-👤 Author
-
-Gaurav Chauhan
-B.Tech Graduate
+Integration with real sensor data
