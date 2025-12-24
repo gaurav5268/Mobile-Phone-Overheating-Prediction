@@ -1,0 +1,13 @@
+# Virtual environment
+mlenv/
+env/
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+temperature_regressor.pkl 
+overheat_classifier.pkl   
+model_features.pkl 
